@@ -1,0 +1,43 @@
+--- origsrc/mate-applets-1.4.0/Makefile.am	2012-07-11 11:46:07.000000000 -0500
++++ src/mate-applets-1.4.0/Makefile.am	2012-11-14 19:01:44.006210200 -0600
+@@ -43,18 +43,23 @@ if BUILD_TIMER_APPLET
+ timer_applet_SUBDIR = timer-applet
+ endif
+ 
++if HAVE_MATECOMPONENT
++null_applet_SUBDIRS = \
++	null_applet
++endif
++
+ always_built_SUBDIRS = \
+ 	charpick \
+ 	drivemount \
+ 	geyes \
+ 	mini-commander \
+ 	stickynotes \
+-	trashapplet \
+-	null_applet
++	trashapplet
+ 
+ SUBDIRS = \
+ 	po \
+ 	$(always_built_SUBDIRS) \
++	$(null_applet_SUBDIRS) \
+ 	$(modemlights_SUBDIRS) \
+ 	$(gtop_SUBDIRS) \
+ 	$(libmateweather_SUBDIRS) \
+--- origsrc/mate-applets-1.4.0/configure.in	2012-07-11 11:46:06.000000000 -0500
++++ src/mate-applets-1.4.0/configure.in	2012-11-14 18:17:56.878947800 -0600
+@@ -117,9 +117,11 @@ AC_SUBST(GTK_FLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
+ dnl -- check for libmatepanelapplet (required) ------------------------------------
+-PKG_CHECK_MODULES(MATE_APPLETS, libmatepanelapplet-2.0 >= $LIBPANEL_REQUIRED)
++PKG_CHECK_MODULES(MATE_APPLETS, libmatepanelapplet-2.0 >= $LIBPANEL_REQUIRED,
++                  HAVE_MATECOMPONENT=yes, HAVE_MATECOMPONENT=no)
+ AC_SUBST(MATE_APPLETS_CFLAGS)
+ AC_SUBST(MATE_APPLETS_LIBS)
++AM_CONDITIONAL(HAVE_MATECOMPONENT, test x$HAVE_MATECOMPONENT = xyes)
+ 
+ dnl -- check for libmatepanelapplet3 (required) ------------------------------------
+ PKG_CHECK_MODULES(MATE_APPLETS3, libmatepanelapplet-3.0 >= $LIBPANEL3_REQUIRED)

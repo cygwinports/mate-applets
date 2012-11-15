@@ -1,0 +1,15 @@
+inherit mate
+
+NAME="mate-applets"
+VERSION=1.4.0
+RELEASE=1
+CATEGORY="MATE"
+SUMMARY="MATE panel applets"
+DESCRIPTION="MATE is a fork of the GNOME 2 desktop. It provides an intuitive
+and attractive desktop to Linux users using traditional metaphors."
+REQUIRES="mate-system-monitor"
+
+PATCH_URI="1.4.0-cygwin-cpufreq.patch
+           1.4.0-no-matecomponent.patch"
+
+CYGCONF_ARGS="--libexecdir=/usr/lib/mate-panel --disable-frequency-selector"

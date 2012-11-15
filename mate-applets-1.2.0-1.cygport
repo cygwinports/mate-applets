@@ -1,4 +1,0 @@
-inherit mate
-
-
-CYGCONF_ARGS="--libexecdir=/usr/lib/mate-panel"
