@@ -11,4 +11,4 @@ REQUIRES="mate-system-monitor"
 
 PATCH_URI="1.4.0-cygwin-cpufreq.patch"
 
-CYGCONF_ARGS="--libexecdir=/usr/lib/mate-panel --disable-frequency-selector"
+CYGCONF_ARGS="--disable-frequency-selector"
