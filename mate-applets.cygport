@@ -1,7 +1,7 @@
 inherit mate
 
 NAME="mate-applets"
-VERSION=1.16.0
+VERSION=1.18.1
 RELEASE=1
 CATEGORY="MATE"
 SUMMARY="MATE panel applets"
@@ -12,4 +12,4 @@ REQUIRES="mate-system-monitor"
 PATCH_URI="1.4.0-cygwin-cpufreq.patch"
 
 # libexecdir: avoid collisions with gnome-applets
-CYGCONF_ARGS="--libexecdir=/usr/libexec/mate-panel --disable-frequency-selector --with-gtk=3.0"
+CYGCONF_ARGS="--libexecdir=/usr/libexec/mate-panel --disable-frequency-selector"
